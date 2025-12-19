@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Pratiksha! 🎉</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            background: linear-gradient(135deg, #903F9A 0%, #B29CC6 50%, #903F9A 100%);
+            background-size: 400% 400%;
+            animation: gradientFade 10s ease infinite;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        @keyframes gradientFade {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Party decorations */
+        .decoration {
+            position: absolute;
+            font-size: 35px;
+            opacity: 0;
+            animation: popIn 1s ease-out forwards;
+            filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
+        }
+
+        @keyframes popIn {
+            0% {
+                opacity: 0;
+                transform: scale(0) rotate(0deg);
+            }
+            50% {
+                transform: scale(1.3) rotate(180deg);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) rotate(360deg);
+            }
+        }
+
+        /* Blinking stars/sparkles */
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 2s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+        }
+
+        /* Glowing light effects */
+        .glow {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(20px);
+            animation: glowPulse 4s ease-in-out infinite;
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { opacity: 0.4; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.2); }
+        }
+
+        /* Confetti */
+        .confetti {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            animation: confettiFall linear infinite;
+        }
+
+        @keyframes confettiFall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Firework particle */
+        .firework-particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        /* Main content container */
+        .content-wrapper {
+            text-align: center;
+            z-index: 10;
+            position: relative;
+        }
+
+        /* Initial text */
+        .initial-text {
+            font-size: 48px;
+            font-weight: bold;
+            color: #DC143C;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5), 0 0 20px rgba(220, 20, 60, 0.5);
+            margin-bottom: 40px;
+            animation: textGlow 2s ease-in-out infinite;
+            opacity: 1;
+            transition: opacity 0.5s;
+        }
+
+        .initial-text.hidden {
+            opacity: 0;
+            display: none;
+        }
+
+        @keyframes textGlow {
+            0%, 100% { text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5), 0 0 20px rgba(220, 20, 60, 0.5); }
+            50% { text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.7), 0 0 40px rgba(220, 20, 60, 0.8); }
+        }
+
+        /* Button */
+        .surprise-btn {
+            background: linear-gradient(45deg, #FF1493, #FF69B4);
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            padding: 20px 40px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: buttonPulse 1.5s ease-in-out infinite;
+        }
+
+        .surprise-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        @keyframes buttonPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Birthday message */
+        .birthday-message {
+            font-size: 64px;
+            font-weight: bold;
+            color: #B22222;
+            text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.6), 0 0 30px rgba(178, 34, 34, 0.6);
+            margin-bottom: 50px;
+            opacity: 0;
+            animation: fadeInScale 1s ease-out forwards;
+        }
+
+        @keyframes fadeInScale {
+            0% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Speech text without bubble - glowing white/purple */
+        .speech-text {
+            position: relative;
+            font-size: 32px;
+            font-weight: 600;
+            background: linear-gradient(135deg, #FFFFFF 0%, #D8BFD8 50%, #E6E6FA 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.8;
+            opacity: 0;
+            animation: floatIn 2s ease-out 1s forwards, float 3s ease-in-out 3s infinite, glowingText 2s ease-in-out 3s infinite;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 
+                         0 0 40px rgba(216, 191, 216, 0.6),
+                         0 0 60px rgba(144, 63, 154, 0.4);
+        }
+
+        @keyframes floatIn {
+            0% {
+                opacity: 0;
+                transform: translateY(100px) scale(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes glowingText {
+            0%, 100% {
+                filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.6))
+                        drop-shadow(0 0 20px rgba(216, 191, 216, 0.5))
+                        drop-shadow(0 0 30px rgba(144, 63, 154, 0.3));
+            }
+            50% {
+                filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.9))
+                        drop-shadow(0 0 40px rgba(216, 191, 216, 0.8))
+                        drop-shadow(0 0 60px rgba(144, 63, 154, 0.6));
+            }
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* Music note icon */
+        .music-icon {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            font-size: 40px;
+            animation: musicBounce 1s ease-in-out infinite;
+            z-index: 100;
+            opacity: 0;
+        }
+
+        .music-icon.show {
+            opacity: 1;
+        }
+
+        @keyframes musicBounce {
+            0%, 100% { transform: translateY(0px) rotate(-10deg); }
+            50% { transform: translateY(-10px) rotate(10deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Decorations container -->
+    <div id="decorations-container"></div>
+
+    <!-- Stars container -->
+    <div id="stars-container"></div>
+
+    <!-- Glowing lights container -->
+    <div id="glow-container"></div>
+
+    <!-- Confetti container -->
+    <div id="confetti-container"></div>
+
+    <!-- Fireworks container -->
+    <div id="fireworks-container" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 20;"></div>
+
+    <!-- Music icon -->
+    <div class="music-icon" id="musicIcon">🎵</div>
+
+    <!-- Main content -->
+    <div class="content-wrapper">
+        <div id="initial-content">
+            <div class="initial-text">
+                Hey! I know it's<br>your special day ✨
+            </div>
+            <button class="surprise-btn" onclick="showSurprise()">
+                Click Here for Surprise! 🎁
+            </button>
+        </div>
+
+        <div id="surprise-content" class="hidden">
+            <div class="birthday-message">
+                Happiest Birthday<br>Pratiksha! 🎂🎉
+            </div>
+            <div class="speech-text">
+                May your day be filled with endless joy, beautiful moments, 
+                and all the happiness your heart can hold! You deserve 
+                all the wonderful things life has to offer. 
+                Wishing you a fantastic year ahead! 🌟💖
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Piano synthesizer for Happy Birthday
+        let audioContext;
+        let isPlaying = false;
+
+        // Piano note frequencies
+        const notes = {
+            'C4': 261.63, 'D4': 293.66, 'E4': 329.63, 'F4': 349.23,
+            'G4': 392.00, 'A4': 440.00, 'B4': 493.88, 'C5': 523.25,
+            'D5': 587.33, 'E5': 659.25, 'F5': 698.46, 'G5': 783.99
+        };
+
+        // Happy Birthday melody
+        const melody = [
+            {note: 'G4', duration: 0.75}, {note: 'G4', duration: 0.25},
+            {note: 'A4', duration: 1}, {note: 'G4', duration: 1},
+            {note: 'C5', duration: 1}, {note: 'B4', duration: 2},
+
+            {note: 'G4', duration: 0.75}, {note: 'G4', duration: 0.25},
+            {note: 'A4', duration: 1}, {note: 'G4', duration: 1},
+            {note: 'D5', duration: 1}, {note: 'C5', duration: 2},
+
+            {note: 'G4', duration: 0.75}, {note: 'G4', duration: 0.25},
+            {note: 'G5', duration: 1}, {note: 'E5', duration: 1},
+            {note: 'C5', duration: 1}, {note: 'B4', duration: 1},
+            {note: 'A4', duration: 1.5}, {note: 'REST', duration: 0.5},
+
+            {note: 'F5', duration: 0.75}, {note: 'F5', duration: 0.25},
+            {note: 'E5', duration: 1}, {note: 'C5', duration: 1},
+            {note: 'D5', duration: 1}, {note: 'C5', duration: 2}
+        ];
+
+        // Create realistic piano note with multiple harmonics
+        function playPianoNote(frequency, duration, startTime) {
+            if (!audioContext) return;
+
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+
+            const harmonic2 = audioContext.createOscillator();
+            const harmonic3 = audioContext.createOscillator();
+            const harmonicGain2 = audioContext.createGain();
+            const harmonicGain3 = audioContext.createGain();
+
+            const masterGain = audioContext.createGain();
+
+            oscillator.connect(gainNode);
+            harmonic2.connect(harmonicGain2);
+            harmonic3.connect(harmonicGain3);
+
+            gainNode.connect(masterGain);
+            harmonicGain2.connect(masterGain);
+            harmonicGain3.connect(masterGain);
+
+            masterGain.connect(audioContext.destination);
+
+            oscillator.frequency.value = frequency;
+            harmonic2.frequency.value = frequency * 2;
+            harmonic3.frequency.value = frequency * 3;
+
+            oscillator.type = 'triangle';
+            harmonic2.type = 'sine';
+            harmonic3.type = 'sine';
+
+            const attackTime = 0.002;
+            const decayTime = duration * 0.3;
+            const sustainLevel = 0.4;
+
+            gainNode.gain.setValueAtTime(0, startTime);
+            gainNode.gain.linearRampToValueAtTime(0.5, startTime + attackTime);
+            gainNode.gain.exponentialRampToValueAtTime(sustainLevel, startTime + attackTime + decayTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, startTime + duration);
+
+            harmonicGain2.gain.setValueAtTime(0, startTime);
+            harmonicGain2.gain.linearRampToValueAtTime(0.15, startTime + attackTime);
+            harmonicGain2.gain.exponentialRampToValueAtTime(0.1, startTime + attackTime + decayTime);
+            harmonicGain2.gain.exponentialRampToValueAtTime(0.01, startTime + duration);
+
+            harmonicGain3.gain.setValueAtTime(0, startTime);
+            harmonicGain3.gain.linearRampToValueAtTime(0.08, startTime + attackTime);
+            harmonicGain3.gain.exponentialRampToValueAtTime(0.05, startTime + attackTime + decayTime);
+            harmonicGain3.gain.exponentialRampToValueAtTime(0.01, startTime + duration);
+
+            masterGain.gain.setValueAtTime(0.4, startTime);
+
+            oscillator.start(startTime);
+            harmonic2.start(startTime);
+            harmonic3.start(startTime);
+
+            oscillator.stop(startTime + duration);
+            harmonic2.stop(startTime + duration);
+            harmonic3.stop(startTime + duration);
+        }
+
+        // Play birthday song
+        function playBirthdaySong() {
+            if (!audioContext) {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            }
+
+            if (!isPlaying) return;
+
+            let currentTime = audioContext.currentTime;
+            const beatDuration = 0.5;
+
+            melody.forEach((item) => {
+                if (item.note !== 'REST') {
+                    const frequency = notes[item.note];
+                    playPianoNote(frequency, item.duration * beatDuration, currentTime);
+                }
+                currentTime += item.duration * beatDuration;
+            });
+
+            const totalDuration = melody.reduce((sum, item) => sum + item.duration * beatDuration, 0);
+            setTimeout(() => {
+                if (isPlaying) {
+                    playBirthdaySong();
+                }
+            }, totalDuration * 1000 + 500);
+        }
+
+        // Create firework explosion
+        function createFirework(x, y) {
+            const container = document.getElementById('fireworks-container');
+            const colors = ['#FFD700', '#FF69B4', '#00CED1', '#FF6347', '#7FFF00', '#FFA500', '#FF1493', '#00BFFF'];
+            const color = colors[Math.floor(Math.random() * colors.length)];
+
+            const particleCount = 50;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'firework-particle';
+                particle.style.background = color;
+                particle.style.boxShadow = `0 0 10px ${color}`;
+
+                const angle = (Math.PI * 2 * i) / particleCount;
+                const velocity = 150 + Math.random() * 100;
+                const tx = Math.cos(angle) * velocity;
+                const ty = Math.sin(angle) * velocity;
+
+                particle.style.left = x + 'px';
+                particle.style.top = y + 'px';
+
+                container.appendChild(particle);
+
+                const duration = 1000 + Math.random() * 500;
+                const startTime = Date.now();
+
+                function animate() {
+                    const elapsed = Date.now() - startTime;
+                    const progress = elapsed / duration;
+
+                    if (progress < 1) {
+                        const easeOut = 1 - Math.pow(1 - progress, 3);
+                        const currentX = x + tx * easeOut;
+                        const currentY = y + ty * easeOut + (progress * progress * 300);
+
+                        particle.style.left = currentX + 'px';
+                        particle.style.top = currentY + 'px';
+                        particle.style.opacity = 1 - progress;
+
+                        requestAnimationFrame(animate);
+                    } else {
+                        particle.remove();
+                    }
+                }
+
+                animate();
+            }
+        }
+
+        // Launch fireworks continuously
+        function launchFireworks() {
+            const screenWidth = window.innerWidth;
+            const screenHeight = window.innerHeight;
+
+            const x = screenWidth * 0.2 + Math.random() * screenWidth * 0.6;
+            const y = screenHeight * 0.1 + Math.random() * screenHeight * 0.3;
+
+            createFirework(x, y);
+        }
+
+        // Start continuous fireworks
+        let fireworksInterval;
+        function startFireworks() {
+            for (let i = 0; i < 3; i++) {
+                setTimeout(() => launchFireworks(), i * 300);
+            }
+
+            fireworksInterval = setInterval(() => {
+                launchFireworks();
+            }, 1500);
+        }
+
+        // Create party decorations in curved triangle shape
+        function createPartyDecorations() {
+            const container = document.getElementById('decorations-container');
+            const decorations = ['🎈', '🎉', '🎊', '🎁', '🎂', '🎀', '✨', '🌟', '💖', '🎵'];
+
+            const numberOfDecorations = 30;
+            const screenWidth = window.innerWidth;
+            const screenHeight = window.innerHeight;
+
+            const topX = screenWidth / 2;
+            const topY = 0;
+
+            const leftX = 50;
+            const leftY = screenHeight / 2;
+            const rightX = screenWidth - 50;
+            const rightY = screenHeight / 2;
+
+            // Left curved side
+            for (let i = 0; i <= numberOfDecorations / 2; i++) {
+                const decoration = document.createElement('div');
+                decoration.className = 'decoration';
+                decoration.textContent = decorations[Math.floor(Math.random() * decorations.length)];
+
+                const t = i / (numberOfDecorations / 2);
+
+                const controlX = topX - 250;
+                const controlY = screenHeight / 4;
+
+                const x = Math.pow(1 - t, 2) * topX + 
+                          2 * (1 - t) * t * controlX + 
+                          Math.pow(t, 2) * leftX;
+                const y = Math.pow(1 - t, 2) * topY + 
+                          2 * (1 - t) * t * controlY + 
+                          Math.pow(t, 2) * leftY;
+
+                decoration.style.left = x + 'px';
+                decoration.style.top = y + 'px';
+                decoration.style.animationDelay = (i * 0.04) + 's';
+
+                container.appendChild(decoration);
+            }
+
+            // Right curved side
+            for (let i = 0; i <= numberOfDecorations / 2; i++) {
+                const decoration = document.createElement('div');
+                decoration.className = 'decoration';
+                decoration.textContent = decorations[Math.floor(Math.random() * decorations.length)];
+
+                const t = i / (numberOfDecorations / 2);
+
+                const controlX = topX + 250;
+                const controlY = screenHeight / 4;
+
+                const x = Math.pow(1 - t, 2) * topX + 
+                          2 * (1 - t) * t * controlX + 
+                          Math.pow(t, 2) * rightX;
+                const y = Math.pow(1 - t, 2) * topY + 
+                          2 * (1 - t) * t * controlY + 
+                          Math.pow(t, 2) * rightY;
+
+                decoration.style.left = x + 'px';
+                decoration.style.top = y + 'px';
+                decoration.style.animationDelay = (i * 0.04) + 's';
+
+                container.appendChild(decoration);
+            }
+        }
+
+        // Create blinking stars
+        function createStars() {
+            const starsContainer = document.getElementById('stars-container');
+            const numberOfStars = 150;
+
+            for (let i = 0; i < numberOfStars; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+
+                const size = Math.random() * 4 + 1;
+                star.style.width = size + 'px';
+                star.style.height = size + 'px';
+
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+
+                star.style.animationDelay = Math.random() * 2 + 's';
+                star.style.animationDuration = (Math.random() * 2 + 1) + 's';
+
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // Create glowing light effects
+        function createGlowingLights() {
+            const glowContainer = document.getElementById('glow-container');
+            const colors = ['rgba(255, 215, 0, 0.6)', 'rgba(255, 105, 180, 0.6)', 'rgba(0, 206, 209, 0.6)', 'rgba(255, 99, 71, 0.6)'];
+
+            for (let i = 0; i < 8; i++) {
+                const glow = document.createElement('div');
+                glow.className = 'glow';
+
+                const size = Math.random() * 150 + 100;
+                glow.style.width = size + 'px';
+                glow.style.height = size + 'px';
+                glow.style.background = colors[i % colors.length];
+
+                glow.style.left = Math.random() * 100 + '%';
+                glow.style.top = Math.random() * 100 + '%';
+
+                glow.style.animationDelay = Math.random() * 2 + 's';
+                glow.style.animationDuration = (Math.random() * 3 + 2) + 's';
+
+                glowContainer.appendChild(glow);
+            }
+        }
+
+        // Create falling confetti
+        function createConfetti() {
+            const colors = ['#FFD700', '#FF69B4', '#00CED1', '#FFA500', '#7FFF00', '#FF6347', '#4169E1'];
+            const confettiContainer = document.getElementById('confetti-container');
+
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.top = '-10px';
+                    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                    confetti.style.animationDelay = (Math.random() * 0.5) + 's';
+
+                    if (Math.random() > 0.5) {
+                        confetti.style.borderRadius = '50%';
+                    }
+
+                    confettiContainer.appendChild(confetti);
+
+                    setTimeout(() => confetti.remove(), 6000);
+                }, i * 30);
+            }
+        }
+
+        // Continuous confetti
+        function startContinuousConfetti() {
+            setInterval(() => {
+                const colors = ['#FFD700', '#FF69B4', '#00CED1', '#FFA500', '#7FFF00', '#FF6347', '#4169E1'];
+                const confettiContainer = document.getElementById('confetti-container');
+
+                for (let i = 0; i < 5; i++) {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.top = '-10px';
+                    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.animationDuration = (Math.random() * 3 + 3) + 's';
+
+                    if (Math.random() > 0.5) {
+                        confetti.style.borderRadius = '50%';
+                    }
+
+                    confettiContainer.appendChild(confetti);
+
+                    setTimeout(() => confetti.remove(), 6000);
+                }
+            }, 300);
+        }
+
+        // Show surprise content
+        function showSurprise() {
+            document.getElementById('initial-content').classList.add('hidden');
+            document.getElementById('surprise-content').classList.remove('hidden');
+
+            document.getElementById('musicIcon').classList.add('show');
+
+            isPlaying = true;
+            playBirthdaySong();
+
+            startFireworks();
+
+            for (let i = 0; i < 3; i++) {
+                setTimeout(() => createConfetti(), i * 200);
+            }
+        }
+
+        // Initialize on page load
+        window.addEventListener('load', () => {
+            createPartyDecorations();
+            createStars();
+            createGlowingLights();
+            startContinuousConfetti();
+        });
+    </script>
+</body>
+</html>
